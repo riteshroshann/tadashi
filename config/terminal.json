@@ -1,0 +1,41 @@
+{
+  "scheme": {
+    "name": "Tadashi Neon",
+    "background": "#0A0A10",
+    "foreground": "#D6DBE5",
+    "cursorColor": "#FF2A6D",
+    "selectionBackground": "#2A2440",
+    "black": "#0A0A10",
+    "red": "#FF2A6D",
+    "green": "#3DF5A7",
+    "yellow": "#FFD166",
+    "blue": "#3D8BFF",
+    "purple": "#B967FF",
+    "cyan": "#05D9E8",
+    "white": "#D6DBE5",
+    "brightBlack": "#4A4F63",
+    "brightRed": "#FF5C8A",
+    "brightGreen": "#7CFFC4",
+    "brightYellow": "#FFE29A",
+    "brightBlue": "#74AAFF",
+    "brightPurple": "#D29BFF",
+    "brightCyan": "#7DF3FF",
+    "brightWhite": "#FFFFFF"
+  },
+  "defaults": {
+    "colorScheme": "Tadashi Neon",
+    "font": {
+      "face": "JetBrainsMono Nerd Font",
+      "size": 11
+    },
+    "padding": "18, 14",
+    "cursorShape": "bar",
+    "intenseTextStyle": "bright",
+    "scrollbarState": "hidden",
+    "opacity": 97,
+    "useAcrylic": false
+  },
+  "root": {
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}"
+  }
+}

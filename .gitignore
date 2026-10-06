@@ -1,0 +1,4 @@
+# Build leftovers
+.*.folio.typ
+*.log
+__pycache__/

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 286" width="640" height="286">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D1613"/>
+      <stop offset="1" stop-color="#130E0C"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241B17"/>
+      <stop offset="1" stop-color="#1C1512"/>
+    </linearGradient>
+    <style>
+      .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+      .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+      .name { fill: #F6EDE4; font-size: 17px; font-weight: 600; }
+      .line { fill: #C9AE9A; font-size: 13.5px; }
+      .cmd  { fill: #F2B48C; font-size: 12.5px; }
+    </style>
+  </defs>
+
+  <rect width="640" height="286" rx="16" fill="url(#panel)"/>
+  <rect x="0.5" y="0.5" width="639" height="285" rx="16" fill="none" stroke="#33271F"/>
+
+  <g transform="translate(36 40)" fill="#F6EDE4">
+    <circle r="4.5"/><circle cx="28" r="4.5"/>
+    <line x2="28" stroke="#F6EDE4" stroke-width="1.8"/>
+  </g>
+  <text x="82" y="45" class="mono" font-size="14" fill="#F2B48C" letter-spacing="0.06em">armor</text>
+  <text x="604" y="45" class="mono" font-size="13" fill="#A38B7A" text-anchor="end">optional upgrades</text>
+
+  <!-- four pieces, two by two -->
+  <g>
+    <rect x="28" y="70" width="282" height="92" rx="12" fill="url(#tile)" stroke="#33271F"/>
+    <text x="48" y="99" class="sans name">Library</text>
+    <text x="48" y="122" class="sans line">300 more skills, waiting quietly</text>
+    <text x="48" y="146" class="mono cmd">.\setup\library.ps1</text>
+  </g>
+  <g>
+    <rect x="330" y="70" width="282" height="92" rx="12" fill="url(#tile)" stroke="#33271F"/>
+    <text x="350" y="99" class="sans name">Recon</text>
+    <text x="350" y="122" class="sans line">public-source investigation, done right</text>
+    <text x="350" y="146" class="mono cmd">.\setup\osint.ps1</text>
+  </g>
+  <g>
+    <rect x="28" y="174" width="282" height="92" rx="12" fill="url(#tile)" stroke="#33271F"/>
+    <text x="48" y="203" class="sans name">Stealth</text>
+    <text x="48" y="226" class="sans line">tracking off, firewall up</text>
+    <text x="48" y="250" class="mono cmd">.\setup\privacy.ps1</text>
+  </g>
+  <g>
+    <rect x="330" y="174" width="282" height="92" rx="12" fill="url(#tile)" stroke="#33271F"/>
+    <text x="350" y="203" class="sans name">Ink</text>
+    <text x="350" y="226" class="sans line">every kind of document, handled</text>
+    <text x="350" y="250" class="mono cmd">.\setup\documents.ps1</text>
+  </g>
+</svg>

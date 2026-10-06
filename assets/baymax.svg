@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="900" height="420">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FCE9D4"/>
+      <stop offset="1" stop-color="#F2C29A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.48" r="0.5">
+      <stop offset="0" stop-color="#FFF8EE" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFF8EE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="soft" cx="0.38" cy="0.32" r="0.75">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="0.7" stop-color="#F6F3EE"/>
+      <stop offset="1" stop-color="#E4DCD1"/>
+    </radialGradient>
+    <linearGradient id="mug" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9845C"/>
+      <stop offset="1" stop-color="#C9623F"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="420" fill="url(#sky)"/>
+
+  <!-- bokeh -->
+  <g fill="#FFE7C2">
+    <circle cx="120" cy="90" r="26" opacity="0.45"/>
+    <circle cx="205" cy="160" r="12" opacity="0.5"/>
+    <circle cx="90" cy="250" r="16" opacity="0.35"/>
+    <circle cx="760" cy="80" r="30" opacity="0.4"/>
+    <circle cx="690" cy="170" r="11" opacity="0.55"/>
+    <circle cx="810" cy="240" r="18" opacity="0.35"/>
+    <circle cx="640" cy="60" r="8" opacity="0.6"/>
+    <circle cx="260" cy="70" r="7" opacity="0.6"/>
+  </g>
+
+  <ellipse cx="450" cy="210" rx="260" ry="200" fill="url(#glow)"/>
+  <ellipse cx="450" cy="384" rx="135" ry="13" fill="#B97A55" opacity="0.28"/>
+
+  <g stroke="#D9D0C4" stroke-width="1.6">
+    <!-- legs -->
+    <ellipse cx="412" cy="362" rx="36" ry="22" fill="url(#soft)"/>
+    <ellipse cx="488" cy="362" rx="36" ry="22" fill="url(#soft)"/>
+    <!-- body -->
+    <ellipse cx="450" cy="255" rx="114" ry="116" fill="url(#soft)"/>
+    <!-- arms, folded in around the mug -->
+    <ellipse cx="392" cy="246" rx="31" ry="74" fill="url(#soft)" transform="rotate(-38 392 246)"/>
+    <ellipse cx="508" cy="246" rx="31" ry="74" fill="url(#soft)" transform="rotate(38 508 246)"/>
+  </g>
+
+  <!-- mug -->
+  <path d="M470 280 q20 0 20 14 q0 14 -20 14" fill="none" stroke="#C9623F" stroke-width="5" stroke-linecap="round"/>
+  <rect x="428" y="270" width="44" height="44" rx="8" fill="url(#mug)"/>
+  <rect x="428" y="270" width="44" height="7" rx="3.5" fill="#F3A27F" opacity="0.7"/>
+
+  <!-- steam -->
+  <g fill="none" stroke="#E2A07A" stroke-width="3.2" stroke-linecap="round" opacity="0.8">
+    <path d="M440 262 c-8 -8 8 -14 0 -24 c-6 -8 6 -12 2 -20"/>
+    <path d="M455 260 c-8 -9 9 -15 0 -27 c-6 -8 6 -13 2 -22"/>
+    <path d="M469 262 c-8 -8 8 -14 0 -24 c-6 -8 6 -12 2 -20"/>
+  </g>
+
+  <!-- head -->
+  <ellipse cx="450" cy="128" rx="60" ry="41" fill="url(#soft)" stroke="#D9D0C4" stroke-width="1.6"/>
+  <g fill="#1C1C1C">
+    <ellipse cx="427" cy="126" rx="6.6" ry="7.2"/>
+    <ellipse cx="473" cy="126" rx="6.6" ry="7.2"/>
+  </g>
+  <line x1="427" y1="126" x2="473" y2="126" stroke="#1C1C1C" stroke-width="2.6"/>
+</svg>

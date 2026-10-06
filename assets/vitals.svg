@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 150" width="640" height="150">
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1D1613"/>
+      <stop offset="1" stop-color="#130E0C"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F2B48C" stop-opacity="0"/>
+      <stop offset="0.85" stop-color="#F2B48C" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#FFD9BD" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F2B48C" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#F2B48C"/>
+      <stop offset="1" stop-color="#F2B48C" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1" fill="#F2C29A" opacity="0.08"/>
+    </pattern>
+    <clipPath id="clip"><rect width="640" height="150" rx="16"/></clipPath>
+    <style>
+      .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+      .sans { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+      .label { fill: #B39C8C; font-size: 13px; letter-spacing: 0.04em; }
+      .value { fill: #F6EDE4; font-size: 16px; }
+      .sweep { animation: sweep 5s cubic-bezier(.65,0,.35,1) infinite; }
+      @keyframes sweep { 0% { transform: translateY(-70px); } 70%, 100% { transform: translateY(160px); } }
+      @media (prefers-reduced-motion: reduce) { .sweep { animation: none; opacity: 0; } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="640" height="150" fill="url(#panel)"/>
+    <rect width="640" height="150" fill="url(#dots)"/>
+
+    <g transform="translate(36 40)" fill="#F6EDE4">
+      <circle r="4.5"/><circle cx="28" r="4.5"/>
+      <line x2="28" stroke="#F6EDE4" stroke-width="1.8"/>
+    </g>
+    <text x="82" y="45" class="mono" font-size="14" fill="#F2B48C" letter-spacing="0.06em">scan complete</text>
+    <text x="604" y="45" class="mono" font-size="13" fill="#A38B7A" text-anchor="end">tadashi</text>
+
+    <g class="mono label">
+      <text x="36" y="92">tools</text>
+      <text x="36" y="124">skills</text>
+      <text x="340" y="92">privacy</text>
+      <text x="340" y="124">vibes</text>
+    </g>
+    <g class="sans value">
+      <text x="118" y="92">60, one pass</text>
+      <text x="118" y="124">15, on demand</text>
+      <text x="422" y="92">locked down</text>
+      <text x="422" y="124">immaculate</text>
+    </g>
+
+    <g class="sweep" transform="translate(0 -70)">
+      <rect width="640" height="60" fill="url(#beam)"/>
+      <rect y="59" width="640" height="1.5" fill="url(#edge)"/>
+    </g>
+  </g>
+  <rect x="0.5" y="0.5" width="639" height="149" rx="16" fill="none" stroke="#33271F"/>
+</svg>

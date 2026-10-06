@@ -1,0 +1,64 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+# one quiet line of context, then the cursor
+add_newline = true
+command_timeout = 500
+format = "$directory$git_branch$git_state$git_status$python$nodejs$bun$rust$cmd_duration$line_break$character"
+palette = "neon"
+
+[palettes.neon]
+pink   = "#ff2a6d"
+cyan   = "#05d9e8"
+violet = "#b967ff"
+amber  = "#ffd166"
+mint   = "#3df5a7"
+dim    = "#4a4f63"
+
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncate_to_repo = true
+read_only = " ro"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = " "
+style = "pink"
+format = "[$symbol$branch]($style) "
+
+[git_state]
+style = "amber"
+format = "[$state( $progress_current/$progress_total)]($style) "
+
+[git_status]
+style = "violet"
+format = "([$all_status$ahead_behind]($style) )"
+
+[python]
+symbol = "py "
+style = "dim"
+format = "[$symbol$version( $virtualenv)]($style) "
+
+[nodejs]
+symbol = "node "
+style = "dim"
+format = "[$symbol$version]($style) "
+
+[bun]
+symbol = "bun "
+style = "dim"
+format = "[$symbol$version]($style) "
+
+[rust]
+symbol = "rs "
+style = "dim"
+format = "[$symbol$version]($style) "
+
+[cmd_duration]
+min_time = 2000
+style = "amber"
+format = "[$duration]($style) "
+
+[character]
+success_symbol = "[❯](bold pink)"
+error_symbol = "[❯](bold red)"
