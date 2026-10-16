@@ -3,7 +3,7 @@ title: Tadashi
 subtitle: A field manual for the working environment
 author: Ritesh Roshan
 date: October 2026
-note: Version 1.0
+note: Version 1.1
 ---
 
 # Before you begin {.unnumbered}
@@ -20,7 +20,7 @@ The first layer is *tools*. `install.ps1` installs about thirty command-line pro
 
 The second layer is *standing orders*. `claude/CLAUDE.md` is copied to `~/.claude/CLAUDE.md`, the one file Claude Code reads at the start of every session in every project. It sets the bar for finished work, the tools to reach for, the design rules and the writing rules. A new project inherits all of it before the first message.
 
-The third layer is *skills*. Each skill is a folder with instructions, and sometimes scripts, that Claude loads only when the task calls for it. Eight were written for this environment, seven were chosen from a library of more than three hundred, and the rest of that library sits on disk for later.
+The third layer is *skills*. Each skill is a folder with instructions, and sometimes scripts, that Claude loads only when the task calls for it. Eight were written for this environment, thirteen were chosen from public repositories after a full read, and a library of more than three hundred more sits on disk for later.
 
 ## The folder
 
@@ -142,6 +142,12 @@ A skill is a folder whose `SKILL.md` tells Claude when it applies and how to do 
 
 ## The active set
 
+Twenty-one skills are active. Eight were written for this environment and thirteen came from public repositories, each read in full first.
+
+Three of the imported ones were edited on the way in. The test-driven skill now fires only for logic and bug fixes, not for styling or copy, so it adds rigour without slowing small changes. The grilling skill lost its emoji and divider lines. The planning skill carries its definition-of-done checklist with it.
+
+The second wave came in with the same care. Anatomy arrives without its prebuilt example pages, which its own build scripts regenerate, so it costs 2 MB instead of 15. Impeccable is a deep design toolkit, but atelier already owns UI work, so impeccable stays quiet until you call it by name. Its engine reports design choices home by default; deploy switches that off. Its two paid features, image generation and live copy editing through an API, need a key this machine never sets, so they cannot spend money. From superpowers, only the three skills that filled real gaps came in. The rest duplicate skills already here, and the full plugin would load itself into every session.
+
 | Skill | Fires when | Source |
 |:-----------------------|:---------------------------|:-----------|
 | folio | a PDF is wanted | written here |
@@ -159,10 +165,14 @@ A skill is a folder whose `SKILL.md` tells Claude when it applies and how to do 
 | grilling | a plan needs testing | Matt Pocock |
 | receiving-code-review | feedback arrives | superpowers |
 | build-mcp-server | building MCP servers | Anthropic |
+| karpathy-guidelines | writing or reviewing code | Forrest Chang |
+| using-git-worktrees | work needs isolation | superpowers |
+| finishing-a-development-branch | a branch is done | superpowers |
+| dispatching-parallel-agents | tasks can run at once | superpowers |
+| anatomy | a figure explains an idea | wheresryan22 |
+| impeccable | you type `/impeccable` | Paul Bakaus |
 
 : Skills active in every session, beyond those that came with Claude.
-
-Three of these were edited on the way in. The test-driven skill now fires only for logic and bug fixes, not for styling or copy, so it adds rigour without slowing small changes. The grilling skill lost its emoji and divider lines. The planning skill carries its definition-of-done checklist with it.
 
 ## The library
 
@@ -514,6 +524,9 @@ Claude Code
 Status line
 :   A line under the Claude Code prompt showing folder, branch, model, context used, cost and lines changed. You see the state of a session without asking.
 
+Chimes
+:   A soft calendar chime when Claude finishes a turn and a message chime when it needs you, both from sounds Windows already ships. Long tasks can run in another window while you work.
+
 ## Skills {.unlisted}
 
 folio
@@ -560,6 +573,24 @@ receiving-code-review
 
 build-mcp-server
 :   Anthropic's guide to building MCP servers that connect Claude to other systems. New integrations start from the right design.
+
+karpathy-guidelines
+:   Four rules from Andrej Karpathy's notes on how language models go wrong in code: think first, keep it simple, change only what was asked, define what done looks like. Diffs stay small and every line traces back to the request.
+
+using-git-worktrees
+:   Gives a feature its own working copy before the work starts. Experiments never trample the branch you are standing on.
+
+finishing-a-development-branch
+:   Walks a finished branch through tests, then a clear choice to merge, open a pull request, keep it or discard it. Nothing is left half-merged.
+
+dispatching-parallel-agents
+:   Sends independent problems to separate agents at once, each with exactly the context it needs. Three investigations take the time of one.
+
+anatomy
+:   Explains an idea by building it as a working object: a lock, a gauge, a plotter, drawn in isometric SVG with live parts and an audit that checks every joint. Diagrams people stop scrolling for.
+
+impeccable
+:   A design director's toolkit behind one command, `/impeccable`, with audit, critique, polish, typeset, animate and about twenty more moves. Good interfaces get the last ten percent.
 
 ## Intelligence {.unlisted}
 

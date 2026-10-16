@@ -105,20 +105,41 @@ print("  set    " + wt)
   $merge | python - $wt (Join-Path $kit 'config\terminal.json')
 } else { Write-Host "  skip   Windows Terminal not found" }
 
-Write-Host "`n[6/7] Claude Code status line"
+Write-Host "`n[6/7] Claude Code settings"
 Place (Join-Path $kit 'claude\statusline.py') (Join-Path $claude 'statusline.py')
 $cc = Join-Path $claude 'settings.json'
 Backup $cc
-$statusMerge = @'
+$settingsMerge = @'
 import json, os, sys
 path, script = sys.argv[1], sys.argv[2].replace(os.sep, "/")
 settings = json.load(open(path, encoding="utf-8-sig")) if os.path.exists(path) else {}
 settings["statusLine"] = {"type": "command", "command": "python -I " + script, "padding": 0}
 settings["attribution"] = {"commit": "", "pr": "", "sessionUrl": False}
+settings.setdefault("env", {}).update({"IMPECCABLE_NO_TELEMETRY": "1", "DO_NOT_TRACK": "1"})
+# impeccable runs only as /impeccable; atelier stays the default for UI work
+settings.setdefault("skillOverrides", {})["impeccable"] = "user-invocable-only"
+# a chime when a turn ends, another when Claude needs you; other hooks are kept
+chimes = {"Stop": "Windows Notify Calendar", "Notification": "Windows Notify Messaging"}
+hooks = settings.setdefault("hooks", {})
+for event, sound in chimes.items():
+    kept = [g for g in hooks.get(event, []) if "Media.SoundPlayer" not in json.dumps(g)]
+    play = "(New-Object Media.SoundPlayer 'C:/Windows/Media/%s.wav').PlaySync()" % sound
+    hooks[event] = kept + [{"hooks": [{"type": "command", "command": play, "shell": "powershell", "async": True}]}]
 json.dump(settings, open(path, "w", encoding="utf-8"), indent=2)
 print("  set    " + path)
 '@
-$statusMerge | python - $cc (Join-Path $claude 'statusline.py')
+$settingsMerge | python - $cc (Join-Path $claude 'statusline.py')
+$imp = Join-Path $env:USERPROFILE '.impeccable\config.json'
+New-Item -ItemType Directory -Force (Split-Path $imp) | Out-Null
+$impMerge = @'
+import json, os, sys
+path = sys.argv[1]
+config = json.load(open(path, encoding="utf-8-sig")) if os.path.exists(path) else {}
+config["telemetry"] = False
+json.dump(config, open(path, "w", encoding="utf-8"), indent=2)
+print("  set    " + path)
+'@
+$impMerge | python - $imp
 
 Write-Host "`n[7/7] Editor settings (VS Code family)"
 $editorMerge = @'

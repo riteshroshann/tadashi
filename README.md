@@ -8,7 +8,7 @@
 
 My whole computer in one folder. Two commands, and a fresh laptop becomes mine.
 
-<img src="assets/vitals.svg" alt="scan complete: 60 tools in one pass, 15 skills on demand, privacy locked down, vibes immaculate" width="560">
+<img src="assets/vitals.svg" alt="scan complete: 60 tools in one pass, 21 skills on demand, privacy locked down, vibes immaculate" width="560">
 
 </div>
 
