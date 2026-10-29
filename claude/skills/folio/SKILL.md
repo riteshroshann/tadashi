@@ -17,10 +17,22 @@ Everything is installed and works. Do not read the template or scripts, and do n
    date: October 2026
    ---
 
+   # TL;DR {.unnumbered}
+
+   **The single most important finding, in one sentence.**
+
+   **The decision or recommendation, in one sentence.** One plain
+   sentence of supporting detail.
+
+   **The main risk or caveat, in one sentence.** What happens if it
+   occurs.
+
    # First chapter
 
    Prose.
    ```
+
+   Every document must open with a `# TL;DR {.unnumbered}` chapter, the first page after the contents: three or four short paragraphs, each led by one bold sentence, that a reader can act on without reading further. In the body, bold the few sentences a skimmer must not miss, usually one or two per chapter and never more than one per paragraph. Bold whole sentences that carry a finding or decision, never single words or labels.
 
 2. Build. It lints the prose, then typesets:
    `python ~/.claude/skills/folio/scripts/folio.py build doc.md --sheet sheet.png`
