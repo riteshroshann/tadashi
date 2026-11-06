@@ -24,16 +24,24 @@
   author: none,
   date: none,
   note: none,             // one quiet line under the byline: edition, version, place
+  style: "book",          // "book", or "lab" for a university lab record
+  logo: none,             // lab: cover image, e.g. image("logo.png", width: 8.5cm)
+  course: none,           // lab: course code and name, shown under the title
+  roll: none,             // lab: register or roll number
+  guide: none,            // lab: faculty name
+  guide-label: "Under the guidance of",
   paper: "a4",
   lang: "en",
   size: 12pt,
   contents: true,
   depth: 2,
   chapter-label: "Chapter",
-  serif: "EB Garamond",
+  serif: auto,
   mono: "JetBrains Mono",
   body,
 ) = {
+  let lab = style == "lab"
+  let serif = if serif == auto { if lab { "Times New Roman" } else { "EB Garamond" } } else { serif }
   let authors = if author == none { () }
     else if type(author) == array { author }
     else { (author,) }
@@ -47,13 +55,14 @@
   set page(paper: paper, fill: white, margin: (x: 42mm, top: 34mm, bottom: 40mm))
   set text(
     font: serif, size: size, fill: ink, lang: lang,
-    number-type: "old-style", hyphenate: true,
+    number-type: if lab { "lining" } else { "old-style" }, hyphenate: true,
   )
   set par(
     justify: true, leading: 0.74em, spacing: 1.3em, linebreaks: "optimized",
     justification-limits: (tracking: (min: -0.012em, max: 0.018em)),
   )
-  set strong(delta: 200)
+  // bold must read as bold at a glance, not as a heavier regular
+  set strong(delta: 300)
 
   // headings
   set heading(numbering: "1.1")
@@ -65,7 +74,9 @@
     // the contents title isn't outlined itself; start it higher so long contents fit
     v(if it.outlined { 26mm } else { 10mm })
     if it.numbering != none {
-      text(size: 9.5pt, fill: quiet, caps[#chapter-label #counter(heading).display("1")])
+      // times has no small caps, so the lab style tracks plain capitals
+      let label = [#chapter-label #counter(heading).display("1")]
+      text(size: 9.5pt, fill: quiet, if lab { text(tracking: 0.14em, upper(label)) } else { caps(label) })
       v(6mm, weak: true)
     }
     block(text(size: 26pt, it.body))
@@ -163,23 +174,96 @@
   show footnote.entry: set text(size: 8.8pt)
   show footnote.entry: set par(justify: false)
 
-  // front page
-  if title != none {
-    page(margin: (x: 30mm, top: 30mm, bottom: 32mm), {
-      set par(justify: false, leading: 0.45em)
+  // lab records number sections i., ii. within each chapter, frame code,
+  // rule tables, and keep code operators exactly as typed
+  let roman(nums) = numbering("i.", nums.at(1, default: 1))
+  show heading.where(level: 2): it => if lab {
+    block(above: 2.7em, below: 1.15em, sticky: true, text(size: 15pt)[
+      #box(width: 2.2em, text(fill: quiet, counter(heading).display((..n) => roman(n.pos()))))#it.body
+    ])
+  } else { it }
+  show outline.entry.where(level: 2): it => if lab {
+    v(0.44em, weak: true)
+    link(it.element.location(), box(width: 100%, {
+      h(2.2em)
+      box(width: 2.2em, text(size: 0.94em, fill: quiet, roman(counter(heading).at(it.element.location()))))
+      text(size: 0.94em, it.body())
+      h(1fr)
+      text(size: 0.94em, fill: quiet, it.page())
+    }))
+  } else { it }
+  show heading.where(level: 3): it => {
+    show raw: set text(size: 10.5pt, weight: "bold", style: "normal") if lab
+    it
+  }
+  show raw: set text(ligatures: false, features: (calt: 0)) if lab
+  show raw.where(block: true): it => if lab {
+    block(width: 100%, inset: (right: 10pt, y: 9pt), radius: 3pt,
+      stroke: 0.6pt + luma(175), fill: luma(248), breakable: it.lines.len() > 40, it)
+  } else { it }
+  set table(stroke: 0.6pt + luma(140), inset: (x: 7pt, y: 6pt),
+    fill: (_, y) => if y == 0 { luma(236) }) if lab
+  show table.cell.where(y: 0): it => if lab { pad(x: 7pt, y: 6pt, align(left, strong(it.body))) } else { it }
+
+  // front page. the title scales with its length and the subtitle wraps
+  // to a column barely wider than the title, so a short title over a long
+  // caption still reads as one compact, centred unit.
+  let title-size(t) = {
+    let n = plain(t).len()
+    if lab { if n <= 28 { 28pt } else if n <= 56 { 24pt } else { 20pt } }
+    else if n <= 22 { 38pt } else if n <= 44 { 31pt } else if n <= 80 { 25pt } else { 21pt }
+  }
+  let title-block(max) = {
+    let size = title-size(title)
+    let weight = if lab { "bold" } else { "regular" }
+    block(width: 100%, text(size: size, weight: weight, hyphenate: false, title))
+    let sub = if lab and course != none { course } else { subtitle }
+    if sub != none {
+      v(if lab { 5mm } else { 6.5mm })
+      context {
+        let tw = measure(text(size: size, weight: weight, title)).width
+        let w = calc.min(max, calc.max(tw * 1.15, 92mm))
+        block(width: w, par(leading: 0.55em, text(size: 13pt,
+          style: "italic", fill: quiet, hyphenate: false, sub)))
+      }
+    }
+  }
+  if title != none and lab {
+    page(margin: (x: 30mm, top: 26mm, bottom: 30mm), footer: none, {
+      set align(center)
+      set par(justify: false, leading: 0.5em)
+      if logo != none { logo }
+      v(2fr)
+      title-block(150mm)
+      v(3fr)
+      let label(body) = text(size: 10pt, tracking: 0.14em, fill: quiet, upper(body))
+      if authors.len() > 0 {
+        label[Submitted by]
+        v(3mm)
+        text(size: 15pt, authors.join(", "))
+        if roll != none { v(2mm); text(size: 12pt, roll) }
+      }
+      if guide != none {
+        v(9mm)
+        label(guide-label)
+        v(3mm)
+        text(size: 15pt, guide)
+      }
+      if date != none { v(12mm); text(size: 11pt, fill: quiet, date) }
+      v(0.5fr)
+    })
+  } else if title != none {
+    page(margin: (x: 30mm, top: 30mm, bottom: 32mm), footer: none, {
+      set par(justify: false, leading: 0.42em)
       set align(center)
       v(2.3fr)
-      text(size: 36pt, hyphenate: false, title)
-      if subtitle != none {
-        v(9mm)
-        text(size: 14.5pt, style: "italic", fill: quiet, subtitle)
-      }
+      title-block(118mm)
       v(3fr)
       if authors.len() > 0 {
         text(size: 10.5pt, caps(authors.join(", "), tracking: 0.16em))
       }
       if date != none {
-        v(3.5mm)
+        v(3mm)
         text(size: 10.5pt, fill: quiet, date)
       }
       if note != none {

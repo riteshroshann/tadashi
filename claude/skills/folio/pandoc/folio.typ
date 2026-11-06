@@ -1,5 +1,6 @@
 // pandoc -> typst template for folio. front matter keys:
 //   title, subtitle, author (one or a list), date, note,
+//   style (book | lab), logo, course, roll, guide, guide-label,
 //   papersize (a4 | us-letter), lang, contents-depth, no-contents: true
 
 // horizontal rules become space, never lines
@@ -41,6 +42,24 @@ $if(date)$
 $endif$
 $if(note)$
   note: [$note$],
+$endif$
+$if(style)$
+  style: "$style$",
+$endif$
+$if(logo)$
+  logo: image("$logo$", width: 8.5cm),
+$endif$
+$if(course)$
+  course: [$course$],
+$endif$
+$if(roll)$
+  roll: [$roll$],
+$endif$
+$if(guide)$
+  guide: [$guide$],
+$endif$
+$if(guide-label)$
+  guide-label: [$guide-label$],
 $endif$
 $if(papersize)$
   paper: "$papersize$",

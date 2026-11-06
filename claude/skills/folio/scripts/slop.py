@@ -45,7 +45,6 @@ WARN_PHRASES = [
 EMOJI = re.compile(
     "[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F900-\U0001F9FF\U00002B00-\U00002BFF️]"
 )
-BOLD_LABEL_BULLET = re.compile(r"^\s*([-*+]|\d+[.)])\s+(\*\*|__)[^*_]{1,60}(\*\*|__)\s*[:—–-]")
 BULLET = re.compile(r"^\s*([-*+]|\d+[.)])\s+")
 HEADING = re.compile(r"^\s*(#{1,6}|={1,6})\s+(.*)$")
 URL = re.compile(r"https?://\S+")
@@ -87,7 +86,6 @@ def lint(path):
     words = 0
     em_dashes = 0
     bullets = 0
-    bold_bullets = 0
     prose = 0
 
     for n, line in prose_lines(text):
@@ -103,8 +101,6 @@ def lint(path):
         heading = HEADING.match(line)
         if BULLET.match(line):
             bullets += 1
-            if BOLD_LABEL_BULLET.match(line):
-                bold_bullets += 1
         elif not heading:
             prose += 1
 
@@ -126,9 +122,10 @@ def lint(path):
     if words and em_dashes / words > 1 / 250:
         found.append(("error", 0, "em-dash",
                       f"{em_dashes} em dashes in {words} words (limit 1 per 250); rewrite most of them"))
-    if bold_bullets > 2:
-        found.append(("error", 0, "bold-bullets",
-                      f"{bold_bullets} '**Label**: text' bullets; write prose or plain lists instead"))
+    bolds = len(re.findall(r"\*\*[^*]+\*\*", text))
+    if words > 300 and bolds < words / 200:
+        found.append(("warn", 0, "flat",
+                      f"{bolds} bold spans in {words} words; bold the key terms and findings"))
     if prose and bullets > prose * 0.6 and bullets > 8:
         found.append(("warn", 0, "bullets",
                       f"{bullets} bullet lines against {prose} prose lines; a document argues in paragraphs"))
