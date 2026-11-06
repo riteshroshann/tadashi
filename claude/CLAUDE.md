@@ -63,3 +63,7 @@ These apply to every project. A project's own CLAUDE.md adds to them and never l
 
 ## Communication
 Be terse. Give the result first, then what was verified and what's still open.
+
+## Models
+- The lead runs on Opus 5.5 at low effort; medium only for important work. Never higher unless asked.
+- Every subagent runs on Sonnet: pass `model: "sonnet"` on every Agent call and workflow agent, never Opus, and never fork. See the **models** skill.

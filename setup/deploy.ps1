@@ -116,6 +116,10 @@ settings = json.load(open(path, encoding="utf-8-sig")) if os.path.exists(path) e
 settings["statusLine"] = {"type": "command", "command": "python -I " + script, "padding": 0}
 settings["attribution"] = {"commit": "", "pr": "", "sessionUrl": False}
 settings.setdefault("env", {}).update({"IMPECCABLE_NO_TELEMETRY": "1", "DO_NOT_TRACK": "1"})
+# opus 5.5 at low effort leads; every subagent runs on sonnet (see the models skill)
+settings["model"] = "claude-opus-5-5"
+settings.setdefault("modelSettings", {}).setdefault("claude-opus-5-5", {})["effortLevel"] = "low"
+settings["env"]["CLAUDE_CODE_SUBAGENT_MODEL"] = "claude-sonnet-5-5"
 # impeccable runs only as /impeccable; atelier stays the default for UI work
 settings.setdefault("skillOverrides", {})["impeccable"] = "user-invocable-only"
 # a chime when a turn ends, another when Claude needs you; other hooks are kept
