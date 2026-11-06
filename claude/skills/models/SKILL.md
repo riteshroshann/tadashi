@@ -21,4 +21,6 @@ description: Model and effort policy for every session. Use before spawning any 
 - **Workflows:** every `agent()` call in a script passes `{model: "sonnet"}`.
 - **Forks** (`subagent_type: "fork"`) always inherit the lead model, so don't fork. Spawn a fresh Sonnet agent with a clear brief instead.
 
-If a subagent result looks too weak, re-brief it more precisely rather than escalating to Opus. Only the user can lift this rule.
+If a subagent result looks too weak, re-brief it more precisely rather than escalating to Opus.
+
+**The one exception:** when the user explicitly says a subagent task is crucial and asks for Opus, use `model: "opus"` for that task only, then return to Sonnet. Never decide this yourself.
