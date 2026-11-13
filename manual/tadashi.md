@@ -20,7 +20,7 @@ The first layer is *tools*. `install.ps1` installs about thirty command-line pro
 
 The second layer is *standing orders*. `claude/CLAUDE.md` is copied to `~/.claude/CLAUDE.md`, the one file Claude Code reads at the start of every session in every project. It sets the bar for finished work, the tools to reach for, the design rules and the writing rules. A new project inherits all of it before the first message.
 
-The third layer is *skills*. Each skill is a folder with instructions, and sometimes scripts, that Claude loads only when the task calls for it. Eight were written for this environment, thirteen were chosen from public repositories after a full read, and a library of more than three hundred more sits on disk for later.
+The third layer is *skills*. Each skill is a folder with instructions, and sometimes scripts, that Claude loads only when the task calls for it. Eleven were written for this environment, thirteen were chosen from public repositories after a full read, and a library of more than three hundred more sits on disk for later.
 
 ## The folder
 
@@ -105,7 +105,7 @@ hyperfine --warmup 3 'old-build' 'new-build'
 
 ## The shell
 
-Windows Terminal now opens on pure black, the kind an OLED screen switches off, with a glacier blue accent and JetBrains Mono with the Nerd Font glyphs that `eza` uses for its icons. The prompt is stock PowerShell: the folder, then the cursor. Nothing else competes with the work.
+Windows Terminal now opens on pure black, the kind an OLED screen switches off, with a glacier blue accent and JetBrains Mono with the Nerd Font glyphs that `eza` uses for its icons. The prompt is stock PowerShell: the folder, then the cursor. Nothing else competes with the work. Folders and zip files are sky blue across the whole machine, drawn by `config/folder-sky/`.
 
 PowerShell 7 is the default shell in Windows Terminal and in the editor, which uses the same Nerd Font for its terminal, ligatures in code and a line height of 1.6. VS Code, Antigravity and Cursor all wear Glacier OLED, a theme built for this kit: every surface is true black, there are no dividing lines, and the only colour is the glacier blue accent and the syntax itself. Claude Code shows a status line in the same palette: folder, branch, model, how full the context is, cost so far, and lines changed.
 
@@ -142,7 +142,7 @@ A skill is a folder whose `SKILL.md` tells Claude when it applies and how to do 
 
 ## The active set
 
-Twenty-one skills are active. Eight were written for this environment and thirteen came from public repositories, each read in full first.
+Twenty-four skills are active. Eleven were written for this environment and thirteen came from public repositories, each read in full first.
 
 Three of the imported ones were edited on the way in. The test-driven skill now fires only for logic and bug fixes, not for styling or copy, so it adds rigour without slowing small changes. The grilling skill lost its emoji and divider lines. The planning skill carries its definition-of-done checklist with it.
 
@@ -156,6 +156,9 @@ The second wave came in with the same care. Anatomy arrives without its prebuilt
 | authorship | committing or commenting | written here |
 | atelier | any web UI | written here |
 | essentials | before a site ships | written here |
+| onestyle | a new product begins | written here |
+| explain | something needs explaining | written here |
+| models | choosing a model or effort | written here |
 | vibe | most writing | written here |
 | voice | formal writing | written here |
 | verification-before-completion | about to claim done | superpowers |
@@ -540,6 +543,9 @@ osint
 
 atelier
 :   Designs and builds web frontends at award level, from direction and palette to glass navigation, motion, speed and SEO. Sites look considered and load instantly.
+
+onestyle
+:   The house style, taken from Bespoke: white and ink with one sky spark, Google Sans, the glass pill nav, the login frame, the composer, the pet in bubbles, the halo, the lanyard about page, and the Supabase, Gemini, Vercel and Pages stack. Every new product starts looking and shipping like the last good one.
 
 essentials
 :   The minimal, non-negotiable pieces every site ships, scaled to its type and feel. Nothing obvious is missing on launch day.

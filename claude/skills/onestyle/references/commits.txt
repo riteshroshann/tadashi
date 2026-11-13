@@ -1,0 +1,133 @@
+cd25c03 2026-11-13 Outfit look drawn on a generic model and redrawn after every change; print themes kept in searches; wider shops with price comparison; board tools wait for a picture; sleeve ki length binds to the sleeve
+68b9092 2026-11-13 Merge remote-tracking branch 'origin/main'
+3032b75 2026-11-13 Board: full-screen reading with a halo, notes typeset in the site's face, and a pet that talks in bubbles
+0e08d61 2026-11-13 README: translation score after the Hindi sheet fix
+e5860f1 2026-11-13 Re-measure after the engine fixes in 0ec0b5d
+8bfb372 2026-11-13 Requests: a man's kurti is titled a kurta
+b7f18ba 2026-11-13 Talk opens on the composer with how it works in a black band; a finished design moves to the board, which opens on its creative direction
+8eed26d 2026-11-13 Board: paste pictures, chart what the image model sees, read and add the direction in place with a buddy panel
+0d32e07 2026-11-13 Studio: four questions at most, no age or budget asks; shop searches carry the print
+a171423 2026-11-13 Sign up: an address that already has an account says so instead of 'check your email'
+a4db99b 2026-11-13 Shop: short searches shops can match, no price filter, and a search box you can change
+e27a1b3 2026-11-13 Icon: chevrons apart, as in the mark
+0df523b 2026-11-13 Tab and home-screen icon: the Bespoke mark
+3ed5875 2026-11-13 Security headers, a black-box security suite, and one command for every test
+0ec0b5d 2026-11-13 Engine: values bind to the nearest part, inches beat 'deep', typos must look alike; Ask answers less from weak matches
+583f762 2026-11-13 README: the course syllabus, topic by topic, with where each lives
+a05749d 2026-11-13 Re-measure against main ed44caa
+ca15f4d 2026-11-13 Docs: binder disagreement count
+056c1a9 2026-11-13 Docs: seq2seq wording
+ed90790 2026-11-13 Seq2seq study: t5-small with constrained decoding against the binder pipeline
+9db0c4f 2026-11-13 GPT study: perplexity and word-order preference of gpt2 and distilgpt2
+00a506d 2026-11-13 Dependency study: binder against spaCy and nearest-cue attachment; English two-part probes
+c247cbf 2026-11-13 Docs: coverage table rows in one table
+7a3f237 2026-11-13 POS tagging study and the POS-feature test for the slot tagger
+56c48d4 2026-11-13 BERT study: layer-wise probes and attention of the deployed MiniLM tagger
+f591746 2026-11-13 Translation study: Hindi tailor sheet against references, template system and opus-mt
+513a5d3 2026-11-13 Summarisation study: lead, TextRank and the engine phrase against reference lines
+cc91ad5 2026-11-13 Sentiment doc: negator-line count and the lexicon's error kinds
+37b84bc 2026-11-13 Sentiment study: lexicon with negation scope, logistic regression and fine-tuned MiniLM
+bac07f2 2026-11-13 Help-chatbot retrieval study: BM25 against dense and hybrid, with answerability
+c1f0d5f 2026-11-13 Grounding study: trigram, edit distance and embedding with abstention
+70fa04d 2026-11-13 NER per entity type for the gazetteer, the int8 model and the browser path
+7f6e46d 2026-11-13 Binding gold set and scorer for the slot binder, with the par clause-break study
+ed44caa 2026-11-13 Merge the NLP syllabus work
+e4ec51d 2026-11-13 Docs and Ask guides for the new studio, board and inbox; phone layout of the board
+3ee9911 2026-11-13 Add classical NLP coverage table
+01c1c9b 2026-11-13 Add evaluation analysis, figures, syllabus entry point and requirements
+7ba513d 2026-11-13 Add value graph with PageRank and label propagation on held-out items
+3f27eab 2026-11-13 Add LDA and NMF topic models scored by held-out NPMI
+dab25f0 2026-11-13 Add HMM with per-tag emissions, Baum-Welch, and CRF ablation study
+fa3157e 2026-11-13 Add TF-IDF guard classifier cross-validated against the regex guard
+8bfb986 2026-11-13 Add word2vec, fastText and MiniLM embedding comparison on ontology forms
+a8305e1 2026-11-13 Clamp Kneser-Ney discounts on small counts
+1b03de4 2026-11-13 Add n-gram language models (add-k, Witten-Bell, Kneser-Ney) with perplexity study
+1e752de 2026-11-13 Add one-hot, BoW dictionary and TF-IDF from scratch with measured studies
+3c1078a 2026-11-13 Add robustness suite for noise, romanisation and elongation
+33ba1b8 2026-11-13 Add collocation measures from scratch with ontology check
+087b62c 2026-11-13 Add morphological fallback with leave-one-form-out evaluation
+7c68bb4 2026-11-13 Voice: the model must say it heard a voice, so noise never turns into a made-up request
+c770a7d 2026-11-13 Studio drafts: cleared when the account signs out, and carried through sign-up in a new tab
+8729ee3 2026-11-13 Studio tests, log-in gate on Send to a maker, design passed to the board
+4d62064 2026-11-13 Point every studio link at /studio/talk|board|sheet|shop/
+fdadae5 2026-11-13 Studio: recorded voice to the composer, one question with skip, own URL per page
+b6b3afe 2026-11-13 Functions: guarded understand, next question and Gemini transcription
+30ec0be 2026-11-13 Engine: wearer and age, one ranked question at a time, rubbish check, men-only shop links
+e78b62c 2026-11-13 Board tests in the suite
+f5f6756 2026-11-13 Merge the board that reads any picture for ideas
+9597c02 2026-11-13 Board: read any picture for ideas, write them on the board, and choose what to do next
+b289d09 2026-11-13 Board: merge picture ideas with the device reading, lay out notes for the canvas
+32eb1d3 2026-11-13 Inbox: notifier on every page, tests in the suite, Ask hidden where the inbox composer sits
+2ec62e0 2026-11-13 Inbox end-to-end check in two tabs
+7f667fa 2026-11-13 Inbox for customers and makers: threads, pinned design, status, quick replies, toasts and badge
+14f24fd 2026-11-13 Sign-in gate: one pane that says why, and returns you to where you were
+fd08db8 2026-11-13 Supabase: read sync and private typing channels for the inbox
+f38e6d7 2026-11-13 Market: live inbox, per-tab sessions, typing, safe next paths
+f9886da 2026-11-13 Ask: say where designs and boards are kept
+0cfa718 2026-11-13 Board: picture reader function with ontology checks, screening and model fallback
+8ffed89 2026-11-12 Log in: curved fields even when the browser autofills them; one show-password button
+90ae405 2026-11-12 Docs: how the moodboard reads pictures with CLIP, and the big data analytics layer, built and planned
+c284381 2026-11-12 About: the developer, on a three.js lanyard (React Bits), with GitHub, X and LinkedIn
+bc65089 2026-11-12 Docs: clean addresses, one folder per page, no .html in links
+7db6adc 2026-11-12 Docs: guides folder beside its text, open from the start on phones
+89dbeec 2026-11-12 Docs: a floating folder of guides on the overview (FolderFloat from React Bits)
+ac6c20b 2026-11-12 Talk stays white; docs code blocks wrap with the copy button in the corner
+8c75f77 2026-11-12 Docs in the nav and footer; docs map as a list, pinned copy buttons, wrapping tables; the dark brief gets a clear surface and hover
+a25fb4c 2026-11-12 Product Hunt launch kit
+992dcb0 2026-11-12 Docs site on GitHub Pages and an MCP server for Bespoke
+ac97485 2026-11-12 Studio: the empty Talk page goes black, a tunnel with white type and a dark glass nav
+5d10df0 2026-11-12 Log in and sign up on a curved pane: show password, length meter, forgot password, reset page, expired links resend; Log in wording
+dcc33d1 2026-11-12 SEO: titles, descriptions, share image, sitemap, robots and structured data; nav drops Start a design; About ends once
+ee2e1ee 2026-11-12 Ask: log the provider status code on failure
+a2b6a31 2026-11-12 Ask: cap each model at 9 s so the fallback always gets a turn
+d932e58 2026-11-12 Ask: light model first for quick answers, full model as fallback
+78938c3 2026-11-12 Ask: drop the reasoning setting
+94da1d9 2026-11-12 Ask: low reasoning effort, which the model accepts
+155727e 2026-11-12 Ask: no hidden reasoning, so answers come back in seconds
+b8d8f4c 2026-11-12 Ask: one time budget across models so long answers finish; phone studio keeps its home link
+a7d6e3f 2026-11-12 Ask: guarded styling advice that knows the open design; guides still answer product questions
+a15f24d 2026-11-12 Studio: an age is not a length; a kurti for a man is a kurta, and men's searches say so
+04d56d3 2026-11-12 Send to a maker and sign-in: return to the sheet, keep the return address, calm check-your-email state
+855a878 2026-11-12 Studio: blank for every new visit; signed-in designs saved to the account and resumed
+f22108f 2026-11-12 Nav: makers see their own nav; Sign in asks customer or maker
+381cb8b 2026-11-12 Boards saved to Supabase when signed in (scene in a table, pictures in a private bucket), IndexedDB when not
+719cbfe 2026-11-12 About page: the problem, how it works and the founder's vision; linked from nav and footer
+ecee39b 2026-11-12 Sheet and Shop redesigned: paper sheet with sliding language switch, bubbly measurements, lifting search cards
+7b9ebf7 2026-11-12 Talk: say what the studio does and the three steps to a finished design
+f135de4 2026-11-12 Board: blank on every visit, history of every board, clear steps and a live action bar
+ae28838 2026-11-12 Studio: drop the voice bars and the sample briefs
+d0b1147 2026-11-12 Ask: questions about the app point to the studio first
+aa5660d 2026-11-12 Ask: page buttons follow what the question names
+a1af229 2026-11-12 Ask: shorter answers, with buttons to the page each answer is about
+34c121b 2026-11-12 Studio rebuilt with motion: rising headline, live composer, typed-in examples, stitched words, flashing design rows
+1f56131 2026-11-12 Studio in the home page look: glass pill nav, Google Sans display, quiet brief field
+a7c656e 2026-11-12 Maker sign in and sign up no longer bounce a signed-in customer to their requests
+a8917ab 2026-11-12 Start a design opens a blank studio
+47f4164 2026-11-12 Ask: rebuilt chat with typing dots, word reveal, sources, retry and an auto-growing composer
+0c950f4 2026-11-12 Revert "Footer wordmark on a gentle curve, with rounded puffy letters"
+14810b6 2026-11-12 Footer wordmark on a gentle curve, with rounded puffy letters
+ecd50e2 2026-11-12 Google Sans throughout, floating glass nav, new footer, rounder Ask bubble
+89d136e 2026-11-12 Rounder, bubblier Ask launcher with a springy hover
+5676bda 2026-11-12 Ask launcher as a filled bubble with an arrow smile
+77909c6 2026-11-12 Ask: Gemini flash with a lite fallback, and a bubble icon for the launcher
+6a15134 2026-11-12 Drop the signed-in name from the nav
+7552e0a 2026-11-12 Align home to the page column; plain text buttons with balanced padding
+abe84fd 2026-11-12 Clear the home page back to a headline and one button
+ed13524 2026-11-12 Colour photographs of Indian bridal craft in place of the archive scans
+8c94b38 2026-11-12 White theme for the home page and footer
+907da12 2026-11-12 Home, simplified: one ground, one image treatment, almost no copy
+e43b2a7 2026-11-12 Home as a wall of photo panels; cyan brief and closing panel, photos in colour
+d50e71b 2026-11-12 New home: a magazine cover on pattern paper, and a brief measured by tape as you scroll
+8b5d292 2026-11-12 Gallery: stock Skiper 52 look and its original illustrations
+bd788f9 2026-11-12 Bolder Made to measure: heavier, wider type and larger overlapping photos
+2c892b5 2026-11-12 Back-to-top button; ink and cyan palette with the chevron mark
+41561f0 2026-11-12 Fit the walking crowd to its stage; plain pill for the main button
+659ae8a 2026-11-12 Stop Tailwind scanning public/, which held every build for minutes
+c60e727 2026-11-12 Add marketplace, maker studio, guarded assistant and new home
+729e979 2026-10-04 Project report, and the visual picker pipeline with its interface
+8e20bbb 2026-10-04 Home page, live 3D orb, frosted header, and a full test battery
+9f70adc 2026-10-04 Apple-style interface, palette and garment pickers, inline shopping at the end
+70256e8 2026-10-04 Understand everyday requests reliably, with an optional language-model layer
+f4fe3a6 2026-10-04 Readable editorial design on white, own board branding, licence notices
+a9a3d79 2026-10-04 Atelier redesign, on-device voice input, single-author plan
+1916a73 2026-10-04 Bespoke: from customer words and moodboards to tailor-ready garment specifications

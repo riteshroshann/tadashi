@@ -41,6 +41,7 @@ These apply to every project. A project's own CLAUDE.md adds to them and never l
 
 ## Design
 - Any web UI goes through the **atelier** skill. Nothing ships before the **essentials** check passes.
+- Every new product starts from the **onestyle** skill: its look, flows, voice and stack are the house default.
 - Build hierarchy from size, weight and space. Use at most two typefaces and one accent colour.
 - Glass only on floating elements. No badges, check-mark lists, emoji icons, nested cards or decorative gradients.
 - Render or screenshot visual work and look at it before calling it done.
