@@ -1,7 +1,7 @@
 <#
   Tadashi / deploy
   Puts the kit in place: Claude standing orders and skills, the folio Typst package,
-  the prompt, the PowerShell profile, the Windows Terminal theme and the Nerd Font.
+  the PowerShell profile, the Windows Terminal theme, the Nerd Font and the Glacier OLED editor theme.
   Anything it replaces is backed up to ~/.tadashi-backup/<timestamp> first. Idempotent.
   Usage:  powershell -ExecutionPolicy Bypass -File setup\deploy.ps1
 #>
@@ -41,8 +41,7 @@ Get-ChildItem (Join-Path $kit 'claude\skills') -Directory | ForEach-Object {
 Write-Host "`n[2/7] folio Typst package"
 python (Join-Path $claude 'skills\folio\scripts\folio.py') setup | ForEach-Object { "  $_" }
 
-Write-Host "`n[3/7] Prompt and PowerShell profile"
-Place (Join-Path $kit 'config\starship.toml') (Join-Path $env:USERPROFILE '.config\starship.toml')
+Write-Host "`n[3/7] PowerShell profile"
 $block = "# >>> tadashi >>>`r`n" + (Get-Content (Join-Path $kit 'config\profile.ps1') -Raw).TrimEnd() + "`r`n# <<< tadashi <<<"
 $docs  = [Environment]::GetFolderPath('MyDocuments')
 foreach ($p in @("$docs\WindowsPowerShell\profile.ps1", "$docs\PowerShell\profile.ps1")) {
@@ -145,7 +144,22 @@ print("  set    " + path)
 '@
 $impMerge | python - $imp
 
-Write-Host "`n[7/7] Editor settings (VS Code family)"
+Write-Host "`n[7/7] Editor theme and settings (VS Code family)"
+$vsix = Join-Path $env:TEMP 'glacier-oled.vsix'
+python (Join-Path $kit 'config\glacier-oled\build.py') $vsix | Out-Null
+$clis = @{
+  'Code'            = "$env:LOCALAPPDATA\Programs\Microsoft VS Code\bin\code.cmd"
+  'Antigravity IDE' = "$env:LOCALAPPDATA\Programs\Antigravity IDE\bin\antigravity-ide.cmd"
+  'Cursor'          = "$env:LOCALAPPDATA\Programs\cursor\resources\app\bin\cursor.cmd"
+}
+foreach ($app in $clis.Keys) {
+  if (Test-Path $clis[$app]) {
+    & $clis[$app] --install-extension $vsix --force 2>&1 | Out-Null
+    Write-Host ("  set    Glacier OLED in {0}" -f $app)
+  }
+}
+# the editor CLIs can still hold the file for a moment; a leftover temp file is harmless
+try { Remove-Item $vsix -ErrorAction Stop } catch { }
 $editorMerge = @'
 import json, sys
 path, wanted = sys.argv[1], sys.argv[2]
@@ -168,4 +182,4 @@ foreach ($app in 'Antigravity IDE', 'Code', 'Cursor') {
 }
 
 Write-Host "`nDone. Backups (if any): $backup"
-Write-Host "Open a new Windows Terminal window to see the prompt and theme."
+Write-Host "Open a new Windows Terminal window and reload any open editor to see the theme."

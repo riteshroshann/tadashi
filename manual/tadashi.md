@@ -2,8 +2,8 @@
 title: Tadashi
 subtitle: A field manual for the working environment
 author: Ritesh Roshan
-date: October 2026
-note: Version 1.1
+date: November 2026
+note: Version 1.2
 ---
 
 # Before you begin {.unnumbered}
@@ -40,10 +40,10 @@ tadashi/
     statusline.py Claude Code status line
     skills/       the active skills, as source
   config/
-    starship.toml prompt
     profile.ps1   PowerShell additions
     terminal.json Windows Terminal theme
     editor.json   editor settings
+    glacier-oled/ the editor theme
   manual/         the source of this manual
   assets/         the readme art
 ```
@@ -105,9 +105,9 @@ hyperfine --warmup 3 'old-build' 'new-build'
 
 ## The shell
 
-Windows Terminal now opens with a near-black background, a neon palette and JetBrains Mono with the Nerd Font glyphs that the prompt needs. The prompt, drawn by starship, shows the folder, the git branch and its state, the language version when a project declares one, and the duration of any command that ran longer than two seconds. Then it gets out of the way.
+Windows Terminal now opens on pure black, the kind an OLED screen switches off, with a glacier blue accent and JetBrains Mono with the Nerd Font glyphs that `eza` uses for its icons. The prompt is stock PowerShell: the folder, then the cursor. Nothing else competes with the work.
 
-PowerShell 7 is the default shell in Windows Terminal and in the editor, which uses the same Nerd Font for its terminal, ligatures in code and a line height of 1.6. Claude Code shows a status line in the same palette: folder, branch, model, how full the context is, cost so far, and lines changed.
+PowerShell 7 is the default shell in Windows Terminal and in the editor, which uses the same Nerd Font for its terminal, ligatures in code and a line height of 1.6. VS Code, Antigravity and Cursor all wear Glacier OLED, a theme built for this kit: every surface is true black, there are no dividing lines, and the only colour is the glacier blue accent and the syntax itself. Claude Code shows a status line in the same palette: folder, branch, model, how full the context is, cost so far, and lines changed.
 
 The PowerShell additions apply only to interactive windows. `ls` becomes a grouped, icon-aware listing, `ll` adds git status per file, `lt` draws a tree, and `lg` opens lazygit. Scripts and agents get stock PowerShell, so nothing they rely on changes underneath them.
 
@@ -195,7 +195,7 @@ Write Markdown. One `#` begins a chapter, two begin a section, three begin a sub
 title: Quarterly review
 subtitle: Infrastructure, July to September
 author: Platform team
-date: October 2026
+date: November 2026
 ---
 
 # Where the money went
@@ -507,14 +507,14 @@ Tesseract
 
 ## Shell and terminal {.unlisted}
 
-starship
-:   Draws the prompt: folder, git branch and state, language version, and a timer for slow commands. You always know where you are and what state the repository is in.
-
 JetBrains Mono Nerd Font
 :   The coding typeface in Terminal and the editor, with the extra symbols the prompt uses. Code is easier to read and the prompt renders correctly.
 
 Windows Terminal
-:   Runs with the Tadashi Neon theme, generous padding and PowerShell 7 by default, so the terminal is pleasant to spend a day in.
+:   Runs on pure black with the glacier palette, generous padding and PowerShell 7 by default, so the terminal is calm to spend a day in.
+
+Glacier OLED
+:   The editor theme for VS Code, Antigravity and Cursor, installed by deploy. True black, no borders, one glacier blue accent, so the code is the brightest thing on screen.
 
 ## The agent {.unlisted}
 

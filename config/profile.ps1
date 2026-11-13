@@ -9,7 +9,6 @@ $tadashiInteractive = [Environment]::UserInteractive -and -not ($tadashiArgs -ma
   (($tadashiArgs -match '^-noe') -or -not ($tadashiArgs -match '^-(c|com|command|f|file|e|ec|encodedcommand)$'))
 
 if ($tadashiInteractive) {
-  if (Get-Command starship -ErrorAction SilentlyContinue) { Invoke-Expression (& starship init powershell) }
   if (Get-Command zoxide -ErrorAction SilentlyContinue) { Invoke-Expression (& { (zoxide init powershell | Out-String) }) }
 
   if (Get-Command eza -ErrorAction SilentlyContinue) {
@@ -29,13 +28,5 @@ if ($tadashiInteractive) {
     }
   }
 
-  try {
-    Set-PSReadLineOption -ErrorAction Stop -Colors @{
-      Command = '#05d9e8'; Parameter = '#b967ff'; String = '#3df5a7'; Number = '#ffd166'
-      Operator = '#ff2a6d'; Variable = '#d6dbe5'; Comment = '#4a4f63'
-    }
-  } catch { }
-  # psreadline 2.1+ only; windows powershell ships 2.0
-  try { Set-PSReadLineOption -ErrorAction Stop -Colors @{ InlinePrediction = '#4a4f63' } } catch { }
 }
 Remove-Variable tadashiArgs, tadashiInteractive

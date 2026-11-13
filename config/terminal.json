@@ -1,29 +1,29 @@
 {
   "scheme": {
-    "name": "Tadashi Neon",
-    "background": "#0A0A10",
-    "foreground": "#D6DBE5",
-    "cursorColor": "#FF2A6D",
-    "selectionBackground": "#2A2440",
-    "black": "#0A0A10",
-    "red": "#FF2A6D",
-    "green": "#3DF5A7",
-    "yellow": "#FFD166",
-    "blue": "#3D8BFF",
-    "purple": "#B967FF",
-    "cyan": "#05D9E8",
-    "white": "#D6DBE5",
-    "brightBlack": "#4A4F63",
-    "brightRed": "#FF5C8A",
-    "brightGreen": "#7CFFC4",
-    "brightYellow": "#FFE29A",
-    "brightBlue": "#74AAFF",
-    "brightPurple": "#D29BFF",
-    "brightCyan": "#7DF3FF",
+    "name": "Glacier OLED",
+    "background": "#000000",
+    "foreground": "#E6F1F7",
+    "cursorColor": "#4FC3E8",
+    "selectionBackground": "#163846",
+    "black": "#0D1822",
+    "red": "#FF7A90",
+    "green": "#7EE0B0",
+    "yellow": "#F2C48D",
+    "blue": "#4FC3E8",
+    "purple": "#C4B5FD",
+    "cyan": "#9FE3D6",
+    "white": "#C9DFEB",
+    "brightBlack": "#4A6577",
+    "brightRed": "#FFA3B3",
+    "brightGreen": "#A8F0CC",
+    "brightYellow": "#F8DBB5",
+    "brightBlue": "#8FDCF3",
+    "brightPurple": "#DDD3FE",
+    "brightCyan": "#C4F1E8",
     "brightWhite": "#FFFFFF"
   },
   "defaults": {
-    "colorScheme": "Tadashi Neon",
+    "colorScheme": "Glacier OLED",
     "font": {
       "face": "JetBrainsMono Nerd Font",
       "size": 11
@@ -32,10 +32,29 @@
     "cursorShape": "bar",
     "intenseTextStyle": "bright",
     "scrollbarState": "hidden",
-    "opacity": 97,
+    "opacity": 100,
     "useAcrylic": false
   },
   "root": {
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}"
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "themes": [
+      {
+        "name": "OLED",
+        "window": {
+          "applicationTheme": "dark",
+          "useMica": false
+        },
+        "tabRow": {
+          "background": "#000000FF",
+          "unfocusedBackground": "#000000FF"
+        },
+        "tab": {
+          "background": "#000000FF",
+          "unfocusedBackground": "#000000FF",
+          "showCloseButton": "hover"
+        }
+      }
+    ],
+    "theme": "OLED"
   }
 }

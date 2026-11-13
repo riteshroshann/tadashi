@@ -1,0 +1,16 @@
+{
+  "name": "glacier-oled",
+  "displayName": "Glacier OLED",
+  "description": "Pure black OLED theme with a glacier blue accent.",
+  "version": "1.2.0",
+  "publisher": "riteshroshann",
+  "author": { "name": "Ritesh Roshan", "email": "riteshroshansahoo01@gmail.com" },
+  "license": "MIT",
+  "engines": { "vscode": "^1.80.0" },
+  "categories": ["Themes"],
+  "contributes": {
+    "themes": [
+      { "label": "Glacier OLED", "uiTheme": "vs-dark", "path": "./themes/glacier-oled.json" }
+    ]
+  }
+}

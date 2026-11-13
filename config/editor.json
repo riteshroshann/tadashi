@@ -14,5 +14,7 @@
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "workbench.startupEditor": "none",
-  "telemetry.telemetryLevel": "off"
+  "telemetry.telemetryLevel": "off",
+  "workbench.colorTheme": "Glacier OLED",
+  "window.autoDetectColorScheme": false
 }

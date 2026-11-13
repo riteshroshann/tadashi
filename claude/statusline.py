@@ -6,9 +6,10 @@ import json
 import sys
 from pathlib import Path
 
-PINK, CYAN, VIOLET, AMBER, DIM, RESET = (
-    "\033[38;2;255;42;109m", "\033[38;2;5;217;232m", "\033[38;2;185;103;255m",
-    "\033[38;2;255;209;102m", "\033[38;2;74;79;99m", "\033[0m",
+# glacier palette, matching the editor and terminal theme
+MINT, CYAN, ICE, AMBER, DIM, RESET = (
+    "\033[38;2;159;227;214m", "\033[38;2;79;195;232m", "\033[38;2;142;203;245m",
+    "\033[38;2;242;196;141m", "\033[38;2;74;101;119m", "\033[0m",
 )
 
 
@@ -33,11 +34,11 @@ def main():
 
     b = branch(cwd)
     if b:
-        parts.append(f"{PINK} {b}{RESET}")
+        parts.append(f"{MINT} {b}{RESET}")
 
     model = (s.get("model") or {}).get("display_name")
     if model:
-        parts.append(f"{VIOLET}{model}{RESET}")
+        parts.append(f"{ICE}{model}{RESET}")
 
     ctx = s.get("context_window") or {}
     used = ctx.get("used_percentage")
