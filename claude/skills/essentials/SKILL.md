@@ -30,6 +30,15 @@ Ship what the site needs and nothing it doesn't. A portfolio needs no cookie ban
 | SaaS app | auth flows (sign in, sign up, reset), empty, loading and error states, settings, privacy and terms | landing-page flourishes inside the app |
 | Store | product JSON-LD, clear prices and taxes, returns, privacy, terms and a cookie notice where the law requires it, accessible checkout | dark patterns, fake urgency |
 
+### Code blocks and scrollbars
+
+Every docs page, and any page with code, ships these. They're easy to get wrong, so check them in a render with a long line scrolled sideways.
+
+- Put the copy button on a wrapper around `<pre>`, never inside the scrolling `<pre>`. Inside, it scrolls away with the code and lands on top of the text.
+- Pin the button to the top-right corner of the wrapper. Give it a solid backing and a short fade on its left edge, so code that scrolls beneath it disappears cleanly. Show it on hover and focus, and always on touch screens. It says "Copied" for about 1.5 seconds.
+- Copy `pre.innerText`, never text that includes the button's own label.
+- Scrollbars are slim: 6 px, a rounded thumb, a transparent track, no arrow buttons, and brighter on hover. Use `::-webkit-scrollbar` for Chromium and Safari, with `scrollbar-width: thin` as the fallback inside `@supports not selector(::-webkit-scrollbar)`. Setting `scrollbar-width` everywhere makes Chromium ignore the custom style and draw the default bar with arrows.
+
 ## Matched to the feel
 
 - **Luxury and editorial:** fewer pages, larger images, longer load budgets for photography with blurred placeholders, no chat widgets.
