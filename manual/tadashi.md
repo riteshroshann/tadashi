@@ -177,6 +177,11 @@ The second wave came in with the same care. Anatomy arrives without its prebuilt
 
 : Skills active in every session, beyond those that came with Claude.
 
+
+## Plugins
+
+One plugin is installed on top of the skills. **pstack**, from [cursor/plugins](https://github.com/cursor/plugins/tree/main/pstack), is poteto's set of engineering playbooks from Cursor: it goes deep before it goes fast, and writes less but better-verified code. Start a rigorous task with `/pstack:poteto-mode`, set models once with `/pstack:setup-pstack`, and ask `/pstack:poteto-help` when unsure which playbook fits. Deploy installs it through `claude plugin`, with a five-minute clone timeout because the marketplace repository is large. Auto-update stays off for third-party marketplaces, so update it by hand with `claude plugin update pstack@cursor-plugins`.
+
 ## The library
 
 `library.ps1` keeps shallow mirrors of ten public skill repositories in `~/.claude/skill-library`, 317 skills in all. Nothing there loads on its own. `INDEX.md` lists every skill with a short description, and `CURATION.md` explains which ones were chosen and why.

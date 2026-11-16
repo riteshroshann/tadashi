@@ -29,7 +29,7 @@ function Place([string]$src, [string]$dst) {
   Write-Host ("  set    {0}" -f $dst)
 }
 
-Write-Host "`n[1/7] Claude: standing orders and skills"
+Write-Host "`n[1/8] Claude: standing orders and skills"
 $claude = Join-Path $env:USERPROFILE '.claude'
 Place (Join-Path $kit 'claude\CLAUDE.md') (Join-Path $claude 'CLAUDE.md')
 Get-ChildItem (Join-Path $kit 'claude\skills') -Directory | ForEach-Object {
@@ -38,10 +38,10 @@ Get-ChildItem (Join-Path $kit 'claude\skills') -Directory | ForEach-Object {
   Write-Host ("  set    skill {0}" -f $_.Name)
 }
 
-Write-Host "`n[2/7] folio Typst package"
+Write-Host "`n[2/8] folio Typst package"
 python (Join-Path $claude 'skills\folio\scripts\folio.py') setup | ForEach-Object { "  $_" }
 
-Write-Host "`n[3/7] PowerShell profile"
+Write-Host "`n[3/8] PowerShell profile"
 $block = "# >>> tadashi >>>`r`n" + (Get-Content (Join-Path $kit 'config\profile.ps1') -Raw).TrimEnd() + "`r`n# <<< tadashi <<<"
 $docs  = [Environment]::GetFolderPath('MyDocuments')
 foreach ($p in @("$docs\WindowsPowerShell\profile.ps1", "$docs\PowerShell\profile.ps1")) {
@@ -59,7 +59,7 @@ foreach ($p in @("$docs\WindowsPowerShell\profile.ps1", "$docs\PowerShell\profil
   } else { Write-Host ("  ok     {0}" -f $p) }
 }
 
-Write-Host "`n[4/7] JetBrainsMono Nerd Font (per-user, no elevation)"
+Write-Host "`n[4/8] JetBrainsMono Nerd Font (per-user, no elevation)"
 $fontDir = Join-Path $env:LOCALAPPDATA 'Microsoft\Windows\Fonts'
 $reg     = 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Fonts'
 $weights = 'Regular', 'Italic', 'Medium', 'MediumItalic', 'Bold', 'BoldItalic'
@@ -82,7 +82,7 @@ if (Test-Path (Join-Path $fontDir 'JetBrainsMonoNerdFont-Regular.ttf')) {
   Write-Host "  set    JetBrainsMono Nerd Font"
 }
 
-Write-Host "`n[5/7] Windows Terminal theme"
+Write-Host "`n[5/8] Windows Terminal theme"
 $wt = Join-Path $env:LOCALAPPDATA 'Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json'
 if (Test-Path $wt) {
   Backup $wt
@@ -104,7 +104,7 @@ print("  set    " + wt)
   $merge | python - $wt (Join-Path $kit 'config\terminal.json')
 } else { Write-Host "  skip   Windows Terminal not found" }
 
-Write-Host "`n[6/7] Claude Code settings"
+Write-Host "`n[6/8] Claude Code settings"
 Place (Join-Path $kit 'claude\statusline.py') (Join-Path $claude 'statusline.py')
 $cc = Join-Path $claude 'settings.json'
 Backup $cc
@@ -144,7 +144,7 @@ print("  set    " + path)
 '@
 $impMerge | python - $imp
 
-Write-Host "`n[7/7] Editor theme and settings (VS Code family)"
+Write-Host "`n[7/8] Editor theme and settings (VS Code family)"
 $vsix = Join-Path $env:TEMP 'glacier-oled.vsix'
 python (Join-Path $kit 'config\glacier-oled\build.py') $vsix | Out-Null
 $clis = @{
@@ -180,6 +180,20 @@ foreach ($app in 'Antigravity IDE', 'Code', 'Cursor') {
     $editorMerge | python - $file (Join-Path $kit 'config\editor.json')
   }
 }
+
+Write-Host "`n[8/8] Claude plugins"
+# pstack (cursor/plugins): rigorous engineering playbooks; /pstack:poteto-mode starts one
+$cl = Get-Command claude -ErrorAction SilentlyContinue
+if ($cl) {
+  $env:CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS = '300000'
+  $have = (& claude plugin list 2>$null) -join "`n"
+  if ($have -match 'pstack@cursor-plugins') { Write-Host "  ok     pstack" }
+  else {
+    & claude plugin marketplace add cursor/plugins *> $null
+    & claude plugin install pstack@cursor-plugins *> $null
+    Write-Host "  set    pstack"
+  }
+} else { Write-Host "  skip   Claude Code CLI not found" }
 
 Write-Host "`nDone. Backups (if any): $backup"
 Write-Host "Open a new Windows Terminal window and reload any open editor to see the theme."
