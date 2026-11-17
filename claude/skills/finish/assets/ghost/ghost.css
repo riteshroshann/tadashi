@@ -1,0 +1,170 @@
+/* Hero ghost: a soft, slowly breathing echo of the headline */
+.hero-grid {
+  position: relative;
+}
+
+.hero-ghost {
+  position: absolute;
+  left: 20px;
+  top: -0.12em;
+  z-index: 0;
+  font-size: clamp(56px, 9vw, 160px);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  color: var(--spark);
+  opacity: 0.16;
+  filter: blur(28px);
+  pointer-events: none;
+  animation: ghost-breathe 9s ease-in-out infinite;
+}
+
+@media (min-width: 768px) {
+  .hero-ghost {
+    left: 40px;
+  }
+}
+
+.hero-h1,
+.hero-side {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes ghost-breathe {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: translate(0, 6px) scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: translate(10px, -4px) scale(1.015);
+  }
+}
+
+/* Stage ghost: a faint reflection beneath the preview */
+.stage-ghost {
+  height: 120px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 36px 36px 0 0;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.32), transparent 85%);
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.32), transparent 85%);
+  pointer-events: none;
+}
+
+.stage-ghost img {
+  display: block;
+  width: 100%;
+  transform: scaleY(-1);
+  filter: blur(10px) saturate(1.2);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.stage-note {
+  margin-top: 0;
+}
+
+/* Built with: still and ghosted */
+.ghost-sec {
+  padding: 24px 0 clamp(64px, 8vw, 104px);
+}
+
+.ghost-title {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: rgba(13, 17, 23, 0.45);
+}
+
+.ghost-row {
+  list-style: none;
+  margin: 0;
+  padding: 28px 0 8px;
+  border-top: 1px solid rgba(13, 17, 23, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px 44px;
+}
+
+.ghost {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 20px;
+  opacity: 0.42;
+  filter: grayscale(1);
+  cursor: default;
+  transition:
+    opacity 0.45s var(--ease),
+    filter 0.45s var(--ease),
+    transform 0.45s var(--ease);
+}
+
+.ghost-row:hover .ghost {
+  opacity: 0.22;
+}
+
+.ghost-row .ghost:hover {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-2px);
+}
+
+.ghost-mark {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+}
+
+.ghost-mark svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--brand);
+}
+
+.ghost-mono {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, #e16737, #b8411c);
+}
+
+.ghost-name {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.ghost-role {
+  position: absolute;
+  left: 36px;
+  bottom: 0;
+  font-size: 12px;
+  white-space: nowrap;
+  color: rgba(13, 17, 23, 0.55);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.ghost:hover .ghost-role {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ghost {
+    animation: none;
+  }

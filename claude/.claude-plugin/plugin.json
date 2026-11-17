@@ -1,0 +1,14 @@
+{
+  "name": "tadashi",
+  "version": "1.0.0",
+  "description": "Ritesh Roshan's primary skill kit: house style, documents, design, finishing, explaining, workflow and model policy. Works alongside pstack.",
+  "author": {
+    "name": "Ritesh Roshan",
+    "email": "riteshroshansahoo01@gmail.com",
+    "url": "https://github.com/riteshroshann"
+  },
+  "homepage": "https://github.com/riteshroshann/tadashi",
+  "repository": "https://github.com/riteshroshann/tadashi",
+  "license": "MIT",
+  "keywords": ["tadashi", "onestyle", "folio", "finish", "explain", "models", "workflow"]
+}
