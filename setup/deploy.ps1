@@ -119,6 +119,9 @@ settings.setdefault("env", {}).update({"IMPECCABLE_NO_TELEMETRY": "1", "DO_NOT_T
 settings["model"] = "claude-opus-5-5"
 settings.setdefault("modelSettings", {}).setdefault("claude-opus-5-5", {})["effortLevel"] = "low"
 settings["env"]["CLAUDE_CODE_SUBAGENT_MODEL"] = "claude-sonnet-5-5"
+# pstack is the primary skill set
+settings.setdefault("extraKnownMarketplaces", {})["cursor-plugins"] = {"source": {"source": "github", "repo": "cursor/plugins"}}
+settings.setdefault("enabledPlugins", {})["pstack@cursor-plugins"] = True
 # impeccable runs only as /impeccable; atelier stays the default for UI work
 settings.setdefault("skillOverrides", {})["impeccable"] = "user-invocable-only"
 # a chime when a turn ends, another when Claude needs you; other hooks are kept

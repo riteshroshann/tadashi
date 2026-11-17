@@ -1,5 +1,10 @@
 # Standing orders
 
+## Primary workflow: pstack
+- pstack (the `pstack@cursor-plugins` plugin) is the primary skill set for every project. Work in its poteto-mode style: concise detailed answers, deliberate subagents, unslopped prose, simple code, verified work.
+- Reach for pstack skills first (architect, figure-it-out, how, interrogate, blast-radius, correct, the principle-* skills, ketchup) before older equivalents; use the rest of this kit where pstack has no skill.
+- pstack's own subagents (poteto-agent) still follow the Models rule: Sonnet.
+
 These apply to every project. A project's own CLAUDE.md adds to them and never lowers them.
 
 ## The bar
